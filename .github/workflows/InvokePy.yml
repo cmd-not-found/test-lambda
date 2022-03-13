@@ -31,6 +31,8 @@ jobs:
         run: echo "Hello, $USER!"
       - name: query directory
         run: ls -lsa
+      - name: pip install boto3
+        run: pip install boto3
       - name: invoke py
         run: python py-test.py
         env:
