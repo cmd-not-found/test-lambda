@@ -1,14 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 name: InvokePy
-# Controls when the action will run.
 on: push
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build_job:
-    # The type of runner that the job will run on
+  build:
     runs-on: ubuntu-latest
-    # https://github.com/marketplace/actions/s3-sync
     steps:
       - uses: actions/checkout@main
       - name: Deploy code to Lambda Function
@@ -28,3 +23,16 @@ jobs:
         run: echo "Hello, $USER!"
       - name: step2
         run: ls -lsa
+  python_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello user
+        run: echo "Hello, $USER!"
+      - name: query directory
+        run: ls -lsa
+      - name: invoke py
+        run: python py-test.py
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
