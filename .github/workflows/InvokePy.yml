@@ -5,7 +5,7 @@ on: push
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  build_job:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # https://github.com/marketplace/actions/s3-sync
@@ -20,3 +20,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
+  linux_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: step1
+        run: echo "Hello, $USER!"
+      - name: step2
+        run: ls -lsa
