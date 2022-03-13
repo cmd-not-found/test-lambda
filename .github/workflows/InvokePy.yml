@@ -26,12 +26,17 @@ jobs:
   linux_job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, $USER!"
-      - run: ls -lsa
+      - name: step1
+        run: echo "Hello, $USER!"
+      - name: step2
+        run: ls -lsa
     
   python_job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, $USER!"
-      - run: ls -lsa
-      - run: python py-test.py
+      - name: step1
+        run: echo "Hello, $USER!"
+      - name: step2
+        run: ls -lsa
+      - name: step3
+        run: python py-test.py
